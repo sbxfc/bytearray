@@ -10,8 +10,6 @@
 #define __ByteArrayDemo__SFByteArray2__
 
 #include <stdio.h>
-
-#include <stdio.h>
 #include <vector>
 
 typedef unsigned char  BYTE;
