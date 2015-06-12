@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5FA7F1DC1B2AAFF400AB72CB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F1DB1B2AAFF400AB72CB /* main.cpp */; };
 		5FA7F1E41B2AB17C00AB72CB /* SFByteArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F1E21B2AB17C00AB72CB /* SFByteArray.cpp */; };
+		5FA7F1E71B2AE78E00AB72CB /* SFByteArray2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F1E51B2AE78E00AB72CB /* SFByteArray2.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		5FA7F1DB1B2AAFF400AB72CB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5FA7F1E21B2AB17C00AB72CB /* SFByteArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SFByteArray.cpp; sourceTree = "<group>"; };
 		5FA7F1E31B2AB17C00AB72CB /* SFByteArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFByteArray.h; sourceTree = "<group>"; };
+		5FA7F1E51B2AE78E00AB72CB /* SFByteArray2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SFByteArray2.cpp; sourceTree = "<group>"; };
+		5FA7F1E61B2AE78E00AB72CB /* SFByteArray2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFByteArray2.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				5FA7F1DB1B2AAFF400AB72CB /* main.cpp */,
 				5FA7F1E21B2AB17C00AB72CB /* SFByteArray.cpp */,
 				5FA7F1E31B2AB17C00AB72CB /* SFByteArray.h */,
+				5FA7F1E51B2AE78E00AB72CB /* SFByteArray2.cpp */,
+				5FA7F1E61B2AE78E00AB72CB /* SFByteArray2.h */,
 			);
 			path = ByteArrayDemo;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FA7F1E71B2AE78E00AB72CB /* SFByteArray2.cpp in Sources */,
 				5FA7F1E41B2AB17C00AB72CB /* SFByteArray.cpp in Sources */,
 				5FA7F1DC1B2AAFF400AB72CB /* main.cpp in Sources */,
 			);

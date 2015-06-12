@@ -8,10 +8,13 @@
 
 #include <iostream>
 #include "SFByteArray.h"
+#include "SFByteArray2.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-
+    
+     /**
+     * 使用反转函数实现的字节流转换
+     */
     SFByteArray bytes;
     bytes.writeString(std::string("sbx"));
     bytes.writeChars("fc");
@@ -41,6 +44,34 @@ int main(int argc, const char * argv[]) {
     
     double d = bytes.read<double>();
     std::cout << d << "\n";
+    
+    /**
+     * 使用移位运算符实现的字节流转换
+     */
+    SFByteArray2 byteArray;
+    byteArray.writeByte(4);
+    
+    std::cout <<"可读取的字节长度:"<< byteArray.readableBytes() << "\n";
+    
+    byteArray.writeShort(32767);
+    byteArray.writeLong(-2147483647);
+    byteArray.writeString("sbxfc");
+    
+    std::cout <<"字节长度:"<< byteArray.size() << "\n";
+    
+    char byteValue = byteArray.readByte();
+    std::cout << byteValue << "\n";
+
+    short shortValue = byteArray.readShort();
+    std::cout << shortValue << "\n";
+    
+    std::cout <<"可读取的字节长度:"<< byteArray.readableBytes() << "\n";
+    
+    long longValue = byteArray.readLong();
+    std::cout << longValue << "\n";
+    
+    std::string strValue = byteArray.readString();
+    std::cout << strValue << "\n";
     
     return 0;
 }
