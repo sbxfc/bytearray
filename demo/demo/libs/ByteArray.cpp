@@ -1,17 +1,16 @@
 //
-//  SFByteArray2.cpp
-//  ByteArrayDemo
+//  ByteArray.cpp
+//  demo
 //
-//  Created by sbx_fc on 15/6/12.
+//  Created by sbxfc on 15/6/12.
 //  Copyright (c) 2015年 SF. All rights reserved.
 //
 
-#include "SFByteArray2.h"
-
+#include "ByteArray.h"
 #include <string>
 #include <stdlib.h>
 
-SFByteArray2::SFByteArray2(int allowSize)
+ByteArray::ByteArray(int allowSize)
 {
     writePos = 0;
     readPos = 0;
@@ -22,7 +21,7 @@ SFByteArray2::SFByteArray2(int allowSize)
 /**
  * 写入一个字节
  */
-void SFByteArray2::writeByte(char value)
+void ByteArray::writeByte(char value)
 {
     writeChars(&value, 1);
 }
@@ -30,7 +29,7 @@ void SFByteArray2::writeByte(char value)
 /**
  * 写入一个布尔值
  */
-void SFByteArray2::writeBOOL(bool value)
+void ByteArray::writeBOOL(bool value)
 {
     writeChars((char *)&value, 1, 0);
 }
@@ -38,10 +37,9 @@ void SFByteArray2::writeBOOL(bool value)
 /**
  * 写入一个短整型数值
  */
-void SFByteArray2::writeShort(short value)
+void ByteArray::writeShort(short value)
 {
-    if(bytesBuf.size() < (writePos + 2))
-    {
+    if(bytesBuf.size() < (writePos + 2)){
         bytesBuf.resize(writePos + 2);
     }
     
@@ -52,10 +50,9 @@ void SFByteArray2::writeShort(short value)
 /**
  * 写入整型数值
  */
-void SFByteArray2::writeInt(int value)
+void ByteArray::writeInt(int value)
 {
-    if(bytesBuf.size() < (writePos + 4))
-    {
+    if(bytesBuf.size() < (writePos + 4)){
         bytesBuf.resize(writePos + 4);
     }
     
@@ -68,10 +65,9 @@ void SFByteArray2::writeInt(int value)
 /**
  * 写入长整型数值
  */
-void SFByteArray2::writeLong(long value)
+void ByteArray::writeLong(long value)
 {
-    if(bytesBuf.size() < (writePos + 8))
-    {
+    if(bytesBuf.size() < (writePos + 8)){
         bytesBuf.resize(writePos + 8);
     }
     
@@ -88,7 +84,7 @@ void SFByteArray2::writeLong(long value)
 /**
  * 写入多个字节
  */
-void SFByteArray2::writeChars(const char *val)
+void ByteArray::writeChars(const char *val)
 {
     writeChars(val, (int)strlen(val), 0);
 }
@@ -96,7 +92,7 @@ void SFByteArray2::writeChars(const char *val)
 /**
  * 写入一个字符串
  */
-void SFByteArray2::writeString(const std::string &value)
+void ByteArray::writeString(const std::string &value)
 {
     writeInt((int)value.size());
     writeChars(value.c_str(), value.size(), 0);
@@ -105,7 +101,7 @@ void SFByteArray2::writeString(const std::string &value)
 /**
  * 写入多个字节
  */
-void SFByteArray2::writeChars(const char *value, size_t length, int offset)
+void ByteArray::writeChars(const char *value, size_t length, int offset)
 {
     if(bytesBuf.size() < (writePos + length))
     {
@@ -113,14 +109,14 @@ void SFByteArray2::writeChars(const char *value, size_t length, int offset)
     }
     
     const char *src = value + offset;
-    ::memcpy(&bytesBuf[writePos], src, length);
+    memcpy(&bytesBuf[writePos], src, length);
     writePos += length;
 }
 
 /**
  * 读取一个字节
  */
-char SFByteArray2::readByte()
+char ByteArray::readByte()
 {
     char value;
     readBytes(&value, 1);
@@ -130,7 +126,7 @@ char SFByteArray2::readByte()
 /**
  * 读取一个布尔值
  */
-bool SFByteArray2::readBOOL()
+bool ByteArray::readBOOL()
 {
     bool value = false;
     readBytes((char *)&value, 1, 0);
@@ -140,7 +136,7 @@ bool SFByteArray2::readBOOL()
 /**
  * 读取一个短整形
  */
-short SFByteArray2::readShort()
+short ByteArray::readShort()
 {
     char bytes[2];
     readBytes(bytes, 2);
@@ -155,7 +151,7 @@ short SFByteArray2::readShort()
 /**
  * 读取一个整形
  */
-int SFByteArray2::readInt()
+int ByteArray::readInt()
 {
     char bytes[4];
     readBytes(bytes, 4);
@@ -172,7 +168,7 @@ int SFByteArray2::readInt()
 /**
  * 读取一个长整形
  */
-long SFByteArray2::readLong()
+long ByteArray::readLong()
 {
     char bytes[8];
     readBytes(bytes, 8);
@@ -192,7 +188,7 @@ long SFByteArray2::readLong()
 /**
  * 读取多个字节
  */
-bool SFByteArray2::readBytes(char *value, size_t length, int offset)
+bool ByteArray::readBytes(char *value, size_t length, int offset)
 {
     char *destBytes = value + offset;
     if(readPos + length > bytesBuf.size())
@@ -200,7 +196,7 @@ bool SFByteArray2::readBytes(char *value, size_t length, int offset)
         *destBytes = 0;
         return false;
     }
-    ::memcpy(destBytes, &bytesBuf[readPos], length);
+    memcpy(destBytes, &bytesBuf[readPos], length);
     readPos += length;
     return true;
 }
@@ -208,7 +204,7 @@ bool SFByteArray2::readBytes(char *value, size_t length, int offset)
 /**
  * 读取多个字节
  */
-void SFByteArray2::readChars(char *val, size_t size)
+void ByteArray::readChars(char *val, size_t size)
 {
     readBytes((char *)val, size, 0);
 }
@@ -216,7 +212,7 @@ void SFByteArray2::readChars(char *val, size_t size)
 /**
  * 读取一个字符串
  */
-std::string SFByteArray2::readString()
+std::string ByteArray::readString()
 {
     int length = readInt();
     char *chars = (char *)malloc(length + 1);
@@ -230,7 +226,7 @@ std::string SFByteArray2::readString()
 /**
  * 释放内存
  */
-SFByteArray2::~SFByteArray2()
+ByteArray::~ByteArray()
 {
     std::vector<char>().swap(bytesBuf);
 }

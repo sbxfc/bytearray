@@ -1,25 +1,25 @@
 //
-//  SFByteArray2.h
+//  ByteArray.h
 //  ByteArrayDemo
 //
-//  Created by sbx_fc on 15/6/12.
+//  Created by sbxfc on 15/6/12.
 //  Copyright (c) 2015年 SF. All rights reserved.
 //
 
-#ifndef __ByteArrayDemo__SFByteArray2__
-#define __ByteArrayDemo__SFByteArray2__
+#ifndef __ByteArrayDemo__ByteArray__
+#define __ByteArrayDemo__ByteArray__
 
 #include <stdio.h>
 #include <vector>
 
 typedef unsigned char  BYTE;
 
-class SFByteArray2
+class ByteArray
 {
     
 public:
-    SFByteArray2(int allocSize = 1);
-    ~SFByteArray2();
+    ByteArray(int allocSize = 1);
+    ~ByteArray();
     
 public:
     
@@ -132,12 +132,12 @@ public:
         return bytesBuf.size() - writePos;
     }
 private:
-    SFByteArray2(const SFByteArray2&);
-    SFByteArray2& operator=(const SFByteArray2&);
+    ByteArray(const ByteArray&);
+    ByteArray& operator=(const ByteArray&);
 private:
     size_t writePos;
     size_t readPos;
     std::vector<char> bytesBuf;
 };
 
-#endif /* defined(__ByteArrayDemo__SFByteArray2__) */
+#endif /* defined(__ByteArrayDemo__ByteArray__) */
